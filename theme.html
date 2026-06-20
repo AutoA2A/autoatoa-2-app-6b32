@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>window.APP_DATA = [{"id":"1","title":"静夜思","author":"李白","dynasty":"唐代","content":"床前明月光，疑是地上霜。举头望明月，低头思故乡。"},{"id":"2","title":"将进酒","author":"李白","dynasty":"唐代","content":"君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。"},{"id":"3","title":"春望","author":"杜甫","dynasty":"唐代","content":"国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。"},{"id":"4","title":"滕王阁序","author":"王勃","dynasty":"唐代","content":"落霞与孤鹜齐飞，秋水共长天一色。"},{"id":"5","title":"登高","author":"杜甫","dynasty":"唐代","content":"风急天高猿啸哀，渚清沙白鸟飞回。无边落木萧萧下，不尽长江滚滚来。"},{"id":"6","title":"春晓","author":"孟浩然","dynasty":"唐代","content":"春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。"},{"id":"7","title":"望庐山瀑布","author":"李白","dynasty":"唐代","content":"日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。"},{"id":"8","title":"秋浦歌","author":"王勃","dynasty":"唐代","content":"白发三千丈，缘愁似个长。不知明镜里，何处得秋霜。"}];(function(d){try{if(Array.isArray(d)){["items","list","data","records","rows","all","results","content"].forEach(function(k){try{if(d[k]===undefined)d[k]=d;}catch(e){}});}window.APP_LIST=Array.isArray(d)?d:[];window.getById=function(id){return window.APP_LIST.find(function(x){return x&&String(x.id)===String(id);})||null;};}catch(e){}})(window.APP_DATA);</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按主题筛选</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .nav {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .nav a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .nav a:hover {
+            color: #2f6fed;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .theme-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .theme-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .theme-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .theme-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .poem-list {
+            margin-top: 20px;
+        }
+        .poem-item {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .poem-item:hover {
+            background-color: #f0f0f0;
+        }
+        .poem-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .poem-author {
+            color: #666666;
+        }
+        @media (max-width: 768px) {
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .theme-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<meta name="description" content="展示按主题分类的诗词列表，点击诗词跳转到 detail.html?id=1"><meta name="keywords" content="古诗词,诗词赏析,诗词注释,诗词背景,诗词解析,中国古典诗词,诗词鉴赏"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="按主题筛选"><meta property="og:description" content="展示按主题分类的诗词列表，点击诗词跳转到 detail.html?id=1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="按主题筛选"><meta name="twitter:description" content="展示按主题分类的诗词列表，点击诗词跳转到 detail.html?id=1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"按主题筛选","description":"展示按主题分类的诗词列表，点击诗词跳转到 detail.html?id=1","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body>
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="dynasty.html">按朝代筛选</a>
+        <a href="author.html">按作者筛选</a>
+        <a href="theme.html">按主题筛选</a>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>按主题筛选</h1>
+        </div>
+        <div class="theme-list" id="themeList"></div>
+    </div>
+    <script>
+        // 按主题分类的诗词数据
+        const themes = [
+            {
+                id: "1",
+                name: "爱国",
+                poems: window.APP_DATA.filter(poem => poem.theme === "爱国")
+            },
+            {
+                id: "2",
+                name: "爱情",
+                poems: window.APP_DATA.filter(poem => poem.theme === "爱情")
+            },
+            {
+                id: "3",
+                name: "友情",
+                poems: window.APP_DATA.filter(poem => poem.theme === "友情")
+            },
+            {
+                id: "4",
+                name: "离别",
+                poems: window.APP_DATA.filter(poem => poem.theme === "离别")
+            },
+            {
+                id: "5",
+                name: "自然",
+                poems: window.APP_DATA.filter(poem => poem.theme === "自然")
+            }
+        ];
+
+        // 渲染主题列表
+        const themeList = document.getElementById('themeList');
+        themes.forEach(theme => {
+            const themeCard = document.createElement('div');
+            themeCard.className = 'theme-card';
+            themeCard.innerHTML = `
+                <div class="theme-title">${theme.name}</div>
+                <div class="poem-list">
+                    ${theme.poems.map(poem => `
+                        <a href="detail.html?id=${poem.id}" class="poem-item">
+                            <div class="poem-title">${poem.title}</div>
+                            <div class="poem-author">${poem.author} · ${poem.dynasty}</div>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+            themeList.appendChild(themeCard);
+        });
+    </script>
+</body>
+</html>
