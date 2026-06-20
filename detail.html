@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>window.APP_DATA = [{"id":"1","title":"静夜思","author":"李白","dynasty":"唐代","content":"床前明月光，疑是地上霜。举头望明月，低头思故乡。"},{"id":"2","title":"将进酒","author":"李白","dynasty":"唐代","content":"君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。"},{"id":"3","title":"春望","author":"杜甫","dynasty":"唐代","content":"国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。"},{"id":"4","title":"滕王阁序","author":"王勃","dynasty":"唐代","content":"落霞与孤鹜齐飞，秋水共长天一色。"},{"id":"5","title":"登高","author":"杜甫","dynasty":"唐代","content":"风急天高猿啸哀，渚清沙白鸟飞回。无边落木萧萧下，不尽长江滚滚来。"},{"id":"6","title":"春晓","author":"孟浩然","dynasty":"唐代","content":"春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。"},{"id":"7","title":"望庐山瀑布","author":"李白","dynasty":"唐代","content":"日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。"},{"id":"8","title":"秋浦歌","author":"王勃","dynasty":"唐代","content":"白发三千丈，缘愁似个长。不知明镜里，何处得秋霜。"}];(function(d){try{if(Array.isArray(d)){["items","list","data","records","rows","all","results","content"].forEach(function(k){try{if(d[k]===undefined)d[k]=d;}catch(e){}});}window.APP_LIST=Array.isArray(d)?d:[];window.getById=function(id){return window.APP_LIST.find(function(x){return x&&String(x.id)===String(id);})||null;};}catch(e){}})(window.APP_DATA);</script>
+    <script>
+        window.APP_DATA = [
+            {
+                "id": "1",
+                "title": "静夜思",
+                "author": "李白",
+                "dynasty": "唐代",
+                "content": "床前明月光，疑是地上霜。\n举头望明月，低头思故乡。",
+                "annotation": "这是李白在月夜思乡的诗作。",
+                "analysis": "这首诗通过月光和思乡的意象，表达了诗人对家乡的思念之情。",
+                "background": "李白在长安做官时，常常思念家乡的山水。",
+                "image": "https://example.com/images/jingye.jpg"
+            },
+            {
+                "id": "2",
+                "title": "春晓",
+                "author": "孟浩然",
+                "dynasty": "唐代",
+                "content": "春眠不觉晓，\n处处闻啼鸟。\n夜来风雨声，\n花落知多少。",
+                "annotation": "这是孟浩然描写春天的诗作。",
+                "analysis": "这首诗通过春眠、啼鸟、风雨等意象，展现了春天的生机和美景。",
+                "background": "孟浩然在洛阳做官时，常常赏春。",
+                "image": "https://example.com/images/chunxiao.jpg"
+            }
+        ];
+
+        window.APP_LIST = window.APP_DATA.map(x => ({
+            id: x.id,
+            title: x.title,
+            author: x.author,
+            dynasty: x.dynasty
+        }));
+
+        window.getById = function(id) {
+            return window.APP_DATA.find(x => String(x.id) === String(id));
+        };
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诗词详情</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .nav {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .nav a:hover {
+            color: #2f6fed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2f6fed;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .poem-detail {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .poem-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .poem-meta {
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .poem-content {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .poem-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2f6fed;
+        }
+
+        .poem-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 4px;
+        }
+
+        .related-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .related-link {
+            color: #2f6fed;
+            text-decoration: none;
+        }
+
+        .related-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .poem-content {
+                font-size: 16px;
+            }
+
+            .related-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="诗词详情">
+    <meta property="og:description" content="读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="诗词详情">
+    <meta name="twitter:description" content="读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "诗词详情",
+            "description": "读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "WebApplication",
+            "url": "https://example.com/detail.html"
+        }
+    </script>
+<meta name="description" content="读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html"><meta name="keywords" content="古诗词,诗词赏析,诗词注释,诗词背景,诗词解析,中国古典诗词,诗词鉴赏"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="诗词详情"><meta property="og:description" content="读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="诗词详情"><meta name="twitter:description" content="读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"诗词详情","description":"读取 ?id= 参数，展示诗词全文、注释、赏析、背景介绍和配图，顶部可返回 index.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body>
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="dynasty.html">按朝代</a>
+        <a href="author.html">按作者</a>
+        <a href="theme.html">按主题</a>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>诗词详情</h1>
+        </div>
+        <a href="index.html" class="back-link">返回首页</a>
+        <div class="poem-detail" id="poem-detail">
+            <!-- 诗词详情内容将在这里动态加载 -->
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const id = new URLSearchParams(window.location.search).get('id');
+            const poem = window.getById(id);
+
+            if (poem) {
+                const poemDetail = document.getElementById('poem-detail');
+                poemDetail.innerHTML = `
+                    <div class="poem-title">${poem.title}</div>
+                    <div class="poem-meta">${poem.dynasty} · ${poem.author}</div>
+                    <div class="poem-content">${poem.content}</div>
+                    ${poem.annotation ? `
+                        <div class="poem-section">
+                            <div class="section-title">注释</div>
+                            <div>${poem.annotation}</div>
+                        </div>
+                    ` : ''}
+                    ${poem.analysis ? `
+                        <div class="poem-section">
+                            <div class="section-title">赏析</div>
+                            <div>${poem.analysis}</div>
+                        </div>
+                    ` : ''}
+                    ${poem.background ? `
+                        <div class="poem-section">
+                            <div class="section-title">背景介绍</div>
+                            <div>${poem.background}</div>
+                        </div>
+                    ` : ''}
+                    ${poem.image ? `
+                        <img src="${poem.image}" alt="${poem.title}" class="poem-image">
+                    ` : ''}
+                    <div class="related-links">
+                        ${poem.annotation ? `<a href="note.html?id=${poem.id}" class="related-link">查看注释详情</a>` : ''}
+                        ${poem.analysis ? `<a href="analysis.html?id=${poem.id}" class="related-link">查看赏析详情</a>` : ''}
+                    </div>
+                `;
+            } else {
+                document.getElementById('poem-detail').innerHTML = '<p>未找到该诗词。</p>';
+            }
+        });
+    </script>
+</body>
+</html>
