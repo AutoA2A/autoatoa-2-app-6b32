@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>window.APP_DATA = [{"id":"1","title":"静夜思","author":"李白","dynasty":"唐代","content":"床前明月光，疑是地上霜。举头望明月，低头思故乡。"},{"id":"2","title":"将进酒","author":"李白","dynasty":"唐代","content":"君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。"},{"id":"3","title":"春望","author":"杜甫","dynasty":"唐代","content":"国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。"},{"id":"4","title":"滕王阁序","author":"王勃","dynasty":"唐代","content":"落霞与孤鹜齐飞，秋水共长天一色。"},{"id":"5","title":"登高","author":"杜甫","dynasty":"唐代","content":"风急天高猿啸哀，渚清沙白鸟飞回。无边落木萧萧下，不尽长江滚滚来。"},{"id":"6","title":"春晓","author":"孟浩然","dynasty":"唐代","content":"春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。"},{"id":"7","title":"望庐山瀑布","author":"李白","dynasty":"唐代","content":"日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。"},{"id":"8","title":"秋浦歌","author":"王勃","dynasty":"唐代","content":"白发三千丈，缘愁似个长。不知明镜里，何处得秋霜。"}];(function(d){try{if(Array.isArray(d)){["items","list","data","records","rows","all","results","content"].forEach(function(k){try{if(d[k]===undefined)d[k]=d;}catch(e){}});}window.APP_LIST=Array.isArray(d)?d:[];window.getById=function(id){return window.APP_LIST.find(function(x){return x&&String(x.id)===String(id);})||null;};}catch(e){}})(window.APP_DATA);</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赏析详情</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .nav {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .nav a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .nav a:hover {
+            color: #2f6fed;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2f6fed;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .poem-analysis {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .poem-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            .poem-analysis {
+                padding: 15px;
+            }
+        }
+    </style>
+<meta name="description" content="读取 ?id= 参数，展示诗词赏析详情，顶部可返回 detail.html?id=1"><meta name="keywords" content="古诗词,诗词赏析,诗词注释,诗词背景,诗词解析,中国古典诗词,诗词鉴赏"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="赏析详情"><meta property="og:description" content="读取 ?id= 参数，展示诗词赏析详情，顶部可返回 detail.html?id=1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="赏析详情"><meta name="twitter:description" content="读取 ?id= 参数，展示诗词赏析详情，顶部可返回 detail.html?id=1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"赏析详情","description":"读取 ?id= 参数，展示诗词赏析详情，顶部可返回 detail.html?id=1","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body>
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="dynasty.html">按朝代筛选</a>
+        <a href="author.html">按作者筛选</a>
+        <a href="theme.html">按主题筛选</a>
+        <a href="search.html">搜索</a>
+    </div>
+    <div class="container">
+        <a href="" class="back-link" id="backLink">返回</a>
+        <div class="poem-analysis">
+            <h1 class="poem-title" id="poemTitle"></h1>
+            <div id="poemAnalysis"></div>
+        </div>
+    </div>
+
+    <script>
+        window.APP_DATA = [{"id":"1","title":"静夜思","author":"李白","dynasty":"唐代","content":"床前明月光，疑是地上霜。举头望明月，低头思故乡。","analysis":"这首诗通过描绘月夜的景象，表达了诗人思念家乡的情感。"},{"id":"2","title":"将进酒","author":"李白","dynasty":"唐代","content":"君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。","analysis":"这首诗通过对黄河流水和人生短暂的感慨，表达了诗人豪迈的情感。"}];
+        (function(d){try{if(Array.isArray(d)){["items","list","data","records","rows","all","results","content"].forEach(function(k){try{if(d[k]===undefined)d[k]=d;}catch(e){}});}window.APP_LIST=Array.isArray(d)?d:[];window.getById=function(id){return window.APP_LIST.find(function(x){return x&&String(x.id)===String(id);})||null;};}catch(e){}})(window.APP_DATA);
+
+        const urlParams = new URLSearchParams(location.search);
+        const id = urlParams.get('id');
+        const poemData = window.getById(id);
+
+        if (poemData) {
+            document.getElementById('poemTitle').textContent = poemData.title + ' - 赏析';
+            document.getElementById('poemAnalysis').textContent = poemData.analysis || '暂无赏析内容';
+            document.getElementById('backLink').href = `detail.html?id=${id}`;
+        } else {
+            document.getElementById('poemTitle').textContent = '未找到相关诗词';
+            document.getElementById('poemAnalysis').textContent = '';
+        }
+    </script>
+</body>
+</html>
