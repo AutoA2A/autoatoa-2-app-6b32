@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>window.APP_DATA = [{"id":"1","title":"静夜思","author":"李白","dynasty":"唐代","content":"床前明月光，疑是地上霜。举头望明月，低头思故乡。"},{"id":"2","title":"将进酒","author":"李白","dynasty":"唐代","content":"君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。"},{"id":"3","title":"春望","author":"杜甫","dynasty":"唐代","content":"国破山河在，城春草木深。感时花溅泪，恨别鸟惊心。"},{"id":"4","title":"滕王阁序","author":"王勃","dynasty":"唐代","content":"落霞与孤鹜齐飞，秋水共长天一色。"},{"id":"5","title":"登高","author":"杜甫","dynasty":"唐代","content":"风急天高猿啸哀，渚清沙白鸟飞回。无边落木萧萧下，不尽长江滚滚来。"},{"id":"6","title":"春晓","author":"孟浩然","dynasty":"唐代","content":"春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。"},{"id":"7","title":"望庐山瀑布","author":"李白","dynasty":"唐代","content":"日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。"},{"id":"8","title":"秋浦歌","author":"王勃","dynasty":"唐代","content":"白发三千丈，缘愁似个长。不知明镜里，何处得秋霜。"}];(function(d){try{if(Array.isArray(d)){["items","list","data","records","rows","all","results","content"].forEach(function(k){try{if(d[k]===undefined)d[k]=d;}catch(e){}});}window.APP_LIST=Array.isArray(d)?d:[];window.getById=function(id){return window.APP_LIST.find(function(x){return x&&String(x.id)===String(id);})||null;};}catch(e){}})(window.APP_DATA);</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .nav {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .nav a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .nav a:hover {
+            color: #2f6fed;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .poem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .poem-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .poem-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .poem-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .poem-author {
+            color: #666666;
+        }
+        @media (max-width: 768px) {
+            .nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .poem-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<meta name="description" content="展示搜索结果列表，点击诗词跳转到 detail.html?id=1"><meta name="keywords" content="古诗词,诗词赏析,诗词注释,诗词背景,诗词解析,中国古典诗词,诗词鉴赏"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="搜索结果"><meta property="og:description" content="展示搜索结果列表，点击诗词跳转到 detail.html?id=1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="搜索结果"><meta name="twitter:description" content="展示搜索结果列表，点击诗词跳转到 detail.html?id=1"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"搜索结果","description":"展示搜索结果列表，点击诗词跳转到 detail.html?id=1","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}}</script></head>
+<body>
+    <div class="nav">
+        <a href="index.html">首页</a>
+        <a href="dynasty.html">按朝代</a>
+        <a href="author.html">按作者</a>
+        <a href="theme.html">按主题</a>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>搜索结果</h1>
+        </div>
+        <div class="poem-list" id="poemList"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const poemList = document.getElementById('poemList');
+            const searchParams = new URLSearchParams(window.location.search);
+            const query = searchParams.get('q');
+
+            if (query && window.APP_DATA) {
+                const filteredPoems = window.APP_DATA.filter(poem =>
+                    poem.title.includes(query) ||
+                    poem.author.includes(query) ||
+                    poem.dynasty.includes(query) ||
+                    poem.content.includes(query)
+                );
+
+                if (filteredPoems.length > 0) {
+                    filteredPoems.forEach(poem => {
+                        const poemCard = document.createElement('div');
+                        poemCard.className = 'poem-card';
+                        poemCard.innerHTML = `
+                            <div class="poem-title">${poem.title}</div>
+                            <div class="poem-author">${poem.author} · ${poem.dynasty}</div>
+                            <div class="poem-content">${poem.content}</div>
+                        `;
+                        poemCard.addEventListener('click', function() {
+                            window.location.href = `detail.html?id=${poem.id}`;
+                        });
+                        poemList.appendChild(poemCard);
+                    });
+                } else {
+                    poemList.innerHTML = '<p>没有找到匹配的诗词。</p>';
+                }
+            } else {
+                poemList.innerHTML = '<p>请输入搜索关键词。</p>';
+            }
+        });
+    </script>
+</body>
+</html>
